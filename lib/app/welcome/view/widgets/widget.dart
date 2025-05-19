@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
-Widget appOnBoardingPage({
+Widget appOnBoardingPage(
+  PageController controller, {
   required String title,
   required String imagepath,
   required String subtitle,
+  double index = 0,
 }) {
   return Column(
     children: [
@@ -19,15 +21,23 @@ Widget appOnBoardingPage({
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: text16Normal(text: subtitle),
       ),
-      _nextbutton(),
+      _nextbutton(index, controller),
     ],
   );
 }
 
-Widget _nextbutton() {
+Widget _nextbutton(double index, PageController controller) {
   return GestureDetector(
     onTap: () {
+      if (index < 3.0) {
+        controller.animateToPage(
+          index.toInt(),
+          duration: Duration(milliseconds: 300),
+          curve: Curves.bounceIn,
+        );
+      }
       print("Tapped");
+      print("Index is $index");
     },
     child: Container(
       margin: EdgeInsets.only(top: 50),
