@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:learner/app/welcome/view/welcome_screen.dart';
+import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightGreen,
+        ), //background halka greenish vayo hernu app ma),
       ),
       home: WelcomeScreen(),
     );
