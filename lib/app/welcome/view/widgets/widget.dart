@@ -11,7 +11,7 @@ Widget appOnBoardingPage(
 }) {
   return Column(
     children: [
-      Image.asset(imagepath, fit: BoxFit.cover),
+      Image.asset(imagepath, fit: BoxFit.cover, height: 350),
       Container(
         margin: EdgeInsets.only(top: 10, left: 16, right: 16),
         child: text24Normal(text: title),
@@ -33,19 +33,24 @@ Widget _nextbutton(double index, PageController controller) {
         controller.animateToPage(
           index.toInt(),
           duration: Duration(milliseconds: 300),
-          curve: Curves.bounceIn,
+          curve: Curves.linear,
         );
       }
       print("Tapped");
       print("Index is $index");
     },
     child: Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: EdgeInsets.only(top: 100),
       height: 50,
       width: 325,
 
       decoration: appBoxShadow(),
-      child: Center(child: text16Normal(text: "Next", color: Colors.white)),
+      child: Center(
+        child: text16Normal(
+          text: index == 3 ? "Get Started" : "Next",
+          color: Colors.white,
+        ),
+      ),
     ),
   );
 }
