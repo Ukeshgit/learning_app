@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:learner/app/authentication/view/pages/sign_in_screen.dart';
+import 'package:learner/common/routes/go_router.dart';
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
@@ -8,6 +11,7 @@ Widget appOnBoardingPage(
   required String imagepath,
   required String subtitle,
   double index = 0,
+  required BuildContext context,
 }) {
   return Column(
     children: [
@@ -21,12 +25,16 @@ Widget appOnBoardingPage(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: text16Normal(text: subtitle),
       ),
-      _nextbutton(index, controller),
+      _nextbutton(index, controller, context),
     ],
   );
 }
 
-Widget _nextbutton(double index, PageController controller) {
+Widget _nextbutton(
+  double index,
+  PageController controller,
+  BuildContext context,
+) {
   return GestureDetector(
     onTap: () {
       if (index < 3.0) {
@@ -35,6 +43,8 @@ Widget _nextbutton(double index, PageController controller) {
           duration: Duration(milliseconds: 300),
           curve: Curves.linear,
         );
+      } else {
+        context.push('/signIn');
       }
       print("Tapped");
       print("Index is $index");

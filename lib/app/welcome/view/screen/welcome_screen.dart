@@ -39,6 +39,7 @@ class WelcomeScreen extends ConsumerWidget {
                   children: [
                     //first page
                     appOnBoardingPage(
+                      context: context,
                       controller,
                       imagepath: "assets/images/reading.png",
                       title: "First See learning",
@@ -47,6 +48,7 @@ class WelcomeScreen extends ConsumerWidget {
                       index: 1,
                     ),
                     appOnBoardingPage(
+                      context: context,
                       controller,
                       imagepath: "assets/images/reading2.png",
                       title: "connect with everyone",
@@ -55,6 +57,7 @@ class WelcomeScreen extends ConsumerWidget {
                       index: 2,
                     ),
                     appOnBoardingPage(
+                      context: context,
                       controller,
                       imagepath: "assets/images/boy.png",
                       title: "Always fascinated learning",

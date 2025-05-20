@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
+import 'package:learner/common/routes/go_router.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -17,16 +18,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
           ),
-          home: child,
+          routerConfig: goRouter,
         );
       },
-      child: WelcomeScreen(), // Your initial screen
     );
   }
 }
