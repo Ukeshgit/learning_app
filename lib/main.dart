@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
 import 'package:learner/common/routes/go_router.dart';
+import 'package:learner/common/utils/app_styles.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -21,9 +22,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
-          ),
+          theme: AppTheme.themeData,
+
           routerConfig: goRouter,
         );
       },

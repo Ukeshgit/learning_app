@@ -11,7 +11,7 @@ AppBar buildAppBar() {
       preferredSize: Size.fromHeight(
         1,
       ), //at a distance of 100 from the appbar,create a container of height ... towards upward
-      child: Container(color: Colors.red, height: 1),
+      child: Container(color: Colors.grey.shade300, height: 1),
     ),
     centerTitle: true,
   );
@@ -45,20 +45,46 @@ Widget _loginButton(String imagePath) {
   );
 }
 
-Widget appTextField(String label) {
+Widget appTextField({
+  String label = "",
+  String text = "Email",
+  IconData prefixIcon = Icons.email,
+  double borderRadius = 15,
+  bool obscureText = false,
+}) {
   return Container(
-    margin: EdgeInsets.only(left: 30.w, right: 30.w, top: 30.h, bottom: 30.h),
-    child: TextField(
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: AppColors.primarySecondaryElementText),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primarySecondaryElementText),
+    margin: EdgeInsets.only(left: 20.w, right: 20.w),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        text14Normal(text: text),
+        TextField(
+          keyboardType: TextInputType.multiline,
+          onChanged: (value) {},
+          maxLines: 1,
+          autocorrect: false,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            prefix: Padding(padding: EdgeInsets.only(left: 10.w)),
+            hintText: label,
+            prefixIcon: Icon(prefixIcon),
+
+            hintStyle: TextStyle(color: AppColors.primaryThreeElementText),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+              borderSide: BorderSide(
+                color: AppColors.primarySecondaryElementText,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+              borderSide: BorderSide(
+                color: AppColors.primarySecondaryElementText,
+              ),
+            ),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primarySecondaryElementText),
-        ),
-      ),
+      ],
     ),
   );
 }

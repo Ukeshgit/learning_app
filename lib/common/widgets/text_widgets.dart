@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/common/utils/app_colors.dart';
 
 Widget text24Normal({String? text, Color color = AppColors.primaryText}) {
@@ -28,5 +29,21 @@ Widget text14Normal({
     text,
     textAlign: TextAlign.center,
     style: TextStyle(color: color, fontSize: 16, fontWeight: FontWeight.normal),
+  );
+}
+
+Widget textUnderline({String text = "Forgot Password?"}) {
+  return GestureDetector(
+    onTap: () {},
+    child: Text(
+      text,
+      style: TextStyle(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.normal,
+
+        decoration: TextDecoration.underline,
+        color: AppColors.primaryText,
+      ),
+    ),
   );
 }
