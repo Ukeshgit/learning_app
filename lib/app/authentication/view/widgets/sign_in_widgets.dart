@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar({String text = "Log In"}) {
   return AppBar(
-    title: text16Normal(text: "Log In", color: AppColors.primaryText),
+    title: text16Normal(text: text, color: AppColors.primaryText),
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(
         1,

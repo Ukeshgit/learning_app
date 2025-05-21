@@ -9,10 +9,11 @@ Widget appButton({
   double width = 325,
   double height = 50,
   bool isLogin = true,
+  void Function()? ontap,
   Color color = AppColors.primaryBackground,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: ontap,
     child: Container(
       width: width,
       height: height,
