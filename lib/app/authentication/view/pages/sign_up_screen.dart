@@ -17,7 +17,7 @@ class SignUpScreen extends StatelessWidget {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          // resizeToAvoidBottomInset: false,
           appBar: buildAppBar(text: "Sign Up"),
           body: SingleChildScrollView(
             child: Container(
@@ -75,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: 60.h),
                   //app login button
                   appButton(
-                    buttonName: "Sign Up",
+                    buttonName: "Register",
                     width: 325.w,
                     height: 50.h,
                     ontap: () {
