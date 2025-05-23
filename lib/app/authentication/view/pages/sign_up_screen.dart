@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,6 +56,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       ref
                           .read(registerNotifierProvider.notifier)
                           .onUserNameChanged(value);
+                      print(value);
                     },
                   ),
                   SizedBox(height: 15.h),
@@ -118,7 +117,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     height: 50.h,
                     ontap: () {
                       _controller.handleSignUp();
-                      context.push('/home');
+                      // context.push('/home');
                     },
                   ),
                   SizedBox(height: 20.h),

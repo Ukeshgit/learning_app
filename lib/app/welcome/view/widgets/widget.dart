@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:learner/app/authentication/view/pages/sign_in_screen.dart';
-import 'package:learner/common/routes/go_router.dart';
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
