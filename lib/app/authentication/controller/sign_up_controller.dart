@@ -20,6 +20,11 @@ class SignUpController {
     if (state.userName.isEmpty) {
       print("Your name is empty");
       toastMessage(msg: "Your name is empty");
+      return;
+    }
+
+    if (state.userName.length < 6 || name.length < 6) {
+      toastMessage(msg: "Your name is too short");
     } else if (state.email.isEmpty) {
       print("Your email is empty");
       toastMessage(msg: "Your email is empty");
