@@ -1,16 +1,20 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 class RegisterState {
-  String userName;
-  String email;
-  String password;
-  String rePassword;
-  RegisterState({
+  final String userName;
+  final String email;
+  final String password;
+  final String rePassword;
+
+  const RegisterState({
     this.userName = "",
     this.email = "",
     this.password = "",
     this.rePassword = "",
   });
 
-  RegisterState copywith({
+  RegisterState copyWith({
     String? userName,
     String? email,
     String? password,

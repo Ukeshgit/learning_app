@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:learner/app/welcome/view/notifier/welcome_notifier.dart';
 import 'package:learner/app/welcome/view/widgets/widget.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
-
-final indexProvider = StateProvider<int>((ref) {
-  return 0;
-});
 
 class WelcomeScreen extends ConsumerWidget {
   WelcomeScreen({super.key});
@@ -17,7 +14,7 @@ class WelcomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final index = ref.watch(indexProvider);
+    final index = ref.watch(indexDotProvider);
 
     return Container(
       color: Colors.white,
@@ -33,7 +30,7 @@ class WelcomeScreen extends ConsumerWidget {
                   onPageChanged: (value) {
                     print("Onchanged value is :$value");
 
-                    ref.read(indexProvider.notifier).state = value;
+                    ref.read(indexDotProvider.notifier).changeIndex(value);
                   },
                   controller: controller,
                   children: [

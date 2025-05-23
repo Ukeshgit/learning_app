@@ -6,4 +6,7 @@ part 'welcome_notifier.g.dart';
 class IndexDot extends _$IndexDot {
   @override
   int build() => 0;
+  void changeIndex(int index) {
+    state = index;
+  }
 }

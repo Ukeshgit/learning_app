@@ -51,6 +51,7 @@ Widget appTextField({
   IconData prefixIcon = Icons.email,
   double borderRadius = 15,
   bool obscureText = false,
+  void Function(String value)? func,
 }) {
   return Container(
     margin: EdgeInsets.only(left: 20.w, right: 20.w),
@@ -60,7 +61,7 @@ Widget appTextField({
         text14Normal(text: text),
         TextField(
           keyboardType: TextInputType.multiline,
-          onChanged: (value) {},
+          onChanged: func,
           maxLines: 1,
           autocorrect: false,
           obscureText: obscureText,
