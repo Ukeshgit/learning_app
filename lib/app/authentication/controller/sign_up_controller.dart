@@ -12,7 +12,7 @@ class SignUpController {
   Future<void> handleSignUp() async {
     var state = ref.watch(registerNotifierProvider);
     String name = state.userName;
-    String email = state.userName;
+    String email = state.email;
     String password = state.password;
     String rePassword = state.rePassword;
     print("Your name is $name");
@@ -45,7 +45,11 @@ class SignUpController {
       print("Your password doesn't match");
       toastMessage(msg: "Your passworddoesn't match");
       return;
+    } else if (!email.contains('@') || !email.contains('.')) {
+      toastMessage(msg: 'Please enter a valid email address');
+      return;
     }
+
     //show the loading icon
     ref.read(apploaderProvider.notifier).setLoaderValue(true);
     Future.delayed(Duration(seconds: 2), () async {
@@ -56,13 +60,21 @@ class SignUpController {
         if (credentials.user != null) {
           await credentials.user?.sendEmailVerification();
           await credentials.user?.updateDisplayName(name);
-          //get server photo url
-          //set server photo url
+          // get server photo url
+          // set server photo url
           toastMessage(
             msg:
                 "An email has been sent to verify your account. Please check your inbox.",
           );
           Navigator.pop(ref.context);
+        }
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          toastMessage(msg: 'The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          toastMessage(msg: 'The account already exists for that email.');
+        } else if (e.code == 'invalid-email') {
+          toastMessage(msg: 'The email address is not valid.');
         }
       } catch (e) {
         print(e);
