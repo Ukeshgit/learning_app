@@ -1,15 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learner/app/authentication/view/notifier/sign_in_notifier.dart';
+import 'package:learner/common/entities/user.dart';
+import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
 
 class SignInController {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   WidgetRef ref;
   SignInController(this.ref);
   Future<void> handlesignIn() async {
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
+    emailController.text = email;
+    passwordController.text = password;
 
     print("Your email is $email");
     print("Your password is $password");
@@ -26,17 +34,37 @@ class SignInController {
       toastMessage(msg: 'Please enter a valid email address');
       return;
     }
-
+    ref.read(apploaderProvider.notifier).setLoaderValue(true);
+    print("0");
     try {
       final credentials = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-
+      print('1');
       if (credentials.user == null) {
         toastMessage(msg: "User doesn't exist.");
       } else if (!credentials.user!.emailVerified) {
         toastMessage(msg: "You must verify your email address first");
       } else {
         toastMessage(msg: "Login successful!");
+      }
+      ref.read(apploaderProvider.notifier).setLoaderValue(false);
+
+      var user = credentials.user!;
+      print('2');
+      if (user != null) {
+        print('3');
+        String? displayName = user.displayName;
+        String? email = user.email;
+        String? id = user.uid;
+        String? photoUrl = user.photoURL;
+        LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+        loginRequestEntity.avatar = photoUrl;
+        loginRequestEntity.name = displayName;
+        loginRequestEntity.email = email;
+        loginRequestEntity.open_id = id;
+        loginRequestEntity.type = 1;
+        asyncPostAllData(loginRequestEntity);
+        print("4");
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
@@ -50,8 +78,13 @@ class SignInController {
       } else {
         toastMessage(msg: "Authentication failed. ${e.message}");
       }
-    } catch (e) {
-      toastMessage(msg: "An unexpected error occurred.");
+      ref.read(apploaderProvider.notifier).setLoaderValue(false);
     }
+  }
+
+  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+    // ref.read(apploaderProvider.notifier).setLoaderValue(true);
+
+    // ref.read(apploaderProvider.notifier).setLoaderValue(false);
   }
 }

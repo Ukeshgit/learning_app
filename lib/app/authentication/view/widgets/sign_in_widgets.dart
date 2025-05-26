@@ -46,6 +46,7 @@ Widget _loginButton(String imagePath) {
 }
 
 Widget appTextField({
+  TextEditingController? controller,
   String label = "",
   String text = "Email",
   IconData prefixIcon = Icons.email,
@@ -60,6 +61,7 @@ Widget appTextField({
       children: [
         text14Normal(text: text),
         TextField(
+          controller: controller,
           keyboardType: TextInputType.multiline,
           onChanged: func,
           maxLines: 1,
