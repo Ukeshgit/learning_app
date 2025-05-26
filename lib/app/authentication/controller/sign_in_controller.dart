@@ -57,6 +57,7 @@ class SignInController {
         String? email = user.email;
         String? id = user.uid;
         String? photoUrl = user.photoURL;
+        print("Your display name is $displayName");
         LoginRequestEntity loginRequestEntity = LoginRequestEntity();
         loginRequestEntity.avatar = photoUrl;
         loginRequestEntity.name = displayName;
@@ -83,8 +84,8 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    // ref.read(apploaderProvider.notifier).setLoaderValue(true);
-
-    // ref.read(apploaderProvider.notifier).setLoaderValue(false);
+    //we need to talk  to server
+    //have local storage
+    //redirect to new page
   }
 }
