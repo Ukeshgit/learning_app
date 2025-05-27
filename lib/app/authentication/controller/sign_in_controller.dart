@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/view/notifier/sign_in_notifier.dart';
 import 'package:learner/common/entities/user.dart';
+import 'package:learner/common/utils/constants.dart';
 import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
+import 'package:learner/global/global.dart';
 
 class SignInController {
   TextEditingController emailController = TextEditingController();
@@ -80,12 +84,29 @@ class SignInController {
         toastMessage(msg: "Authentication failed. ${e.message}");
       }
       ref.read(apploaderProvider.notifier).setLoaderValue(false);
+    } catch (e) {
+      print(e);
+      ref.read(apploaderProvider.notifier).setLoaderValue(false);
     }
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
     //we need to talk  to server
     //have local storage
+    try {
+      //try to remember user info
+      Global.storageService.setString(
+        Appconstants.STORAGE_USER_PROFILE_KEY,
+        "123",
+      );
+      Global.storageService.setString(Appconstants.STORAGE_USER_TOKEN_KEY, "");
+      GoRouter.of(ref.context).go('/home');
+      //finally to route after saving the information
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error is ${e.toString()}");
+      }
+    }
     //redirect to new page
   }
 }

@@ -4,17 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/common/routes/go_router.dart';
 import 'package:learner/common/utils/app_styles.dart';
+import 'package:learner/global/global.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyAfQNB9gpzzNu3Xi4LLcE0aXxHjqghH0ac',
-      appId: "1:1038935307919:android:c658fa7127fe690c1be2fa",
-      messagingSenderId: "1038935307919",
-      projectId: "learningapp-6bf92",
-    ),
-  );
+  Global.init();
   runApp(ProviderScope(child: MyApp()));
 }
 
