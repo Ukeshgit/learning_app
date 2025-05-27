@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:learner/app/authentication/view/notifier/sign_in_state.dart';
+import 'package:learner/app/authentication/model/sign_in_state.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
   SignInNotifier() // this is for child class constructor

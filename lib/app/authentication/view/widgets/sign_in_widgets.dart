@@ -53,6 +53,8 @@ Widget appTextField({
   double borderRadius = 15,
   bool obscureText = false,
   void Function(String value)? func,
+  void Function()? onSuffixIconPressed,
+  Widget suffixIcon = const SizedBox(),
 }) {
   return Container(
     margin: EdgeInsets.only(left: 20.w, right: 20.w),
@@ -71,6 +73,10 @@ Widget appTextField({
             prefix: Padding(padding: EdgeInsets.only(left: 10.w)),
             hintText: label,
             prefixIcon: Icon(prefixIcon),
+            suffixIcon: IconButton(
+              icon: suffixIcon,
+              onPressed: onSuffixIconPressed,
+            ),
 
             hintStyle: TextStyle(color: AppColors.primaryThreeElementText),
             enabledBorder: OutlineInputBorder(

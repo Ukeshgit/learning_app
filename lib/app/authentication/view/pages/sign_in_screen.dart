@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_in_controller.dart';
+import 'package:learner/app/authentication/view/notifier/obscure_notifier.dart';
 import 'package:learner/app/authentication/view/notifier/sign_in_notifier.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/common/utils/app_colors.dart';
@@ -31,6 +32,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   Widget build(BuildContext context) {
     final signInProvider = ref.watch(signInNotifierProvider);
     final loader = ref.watch(apploaderProvider);
+    final obscureStateProvider = ref.watch(obscureProvider);
 
     return Container(
       color: Colors.white,
@@ -67,16 +69,25 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                           SizedBox(height: 15.h),
                           //forgot password text
                           appTextField(
+                            suffixIcon:
+                                obscureStateProvider.isObscured
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
                             controller: _controller.passwordController,
                             label: "Enter your password",
                             text: "Password",
                             borderRadius: 15.sp,
                             prefixIcon: Icons.lock,
-                            obscureText: true,
+                            obscureText: obscureStateProvider.isObscured,
                             func: (value) {
                               ref
                                   .read(signInNotifierProvider.notifier)
                                   .onUserPasswordChanged(value);
+                            },
+                            onSuffixIconPressed: () {
+                              ref
+                                  .read(obscureProvider.notifier)
+                                  .toggleObscure();
                             },
                           ),
                           SizedBox(height: 15.h),

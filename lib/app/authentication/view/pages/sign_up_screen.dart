@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_up_controller.dart';
+import 'package:learner/app/authentication/view/notifier/obscure_notifier.dart';
 import 'package:learner/app/authentication/view/notifier/register_notifier.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/common/utils/app_colors.dart';
@@ -19,6 +20,7 @@ class SignUpScreen extends ConsumerStatefulWidget {
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   late SignUpController _controller;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -30,6 +32,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   Widget build(BuildContext context) {
     final regProvider = ref.watch(registerNotifierProvider);
     final loader = ref.watch(apploaderProvider);
+
+    final signinobscureStateProvider = ref.watch(SigninobscureProvider);
     print(loader);
     return Container(
       color: Colors.white,
@@ -79,11 +83,20 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           SizedBox(height: 15.h),
                           //forgot password text
                           appTextField(
+                            onSuffixIconPressed: () {
+                              ref
+                                  .read(SigninobscureProvider.notifier)
+                                  .toggleObscure();
+                            },
+                            suffixIcon:
+                                signinobscureStateProvider.isObscured
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
                             label: "Enter your password",
                             text: "Password",
                             borderRadius: 15.sp,
                             prefixIcon: Icons.lock,
-                            obscureText: true,
+                            obscureText: signinobscureStateProvider.isObscured,
                             func: (value) {
                               ref
                                   .read(registerNotifierProvider.notifier)
@@ -92,11 +105,20 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           ),
                           SizedBox(height: 15.h),
                           appTextField(
+                            onSuffixIconPressed: () {
+                              ref
+                                  .read(SigninobscureProvider.notifier)
+                                  .toggleObscure();
+                            },
+                            suffixIcon:
+                                signinobscureStateProvider.isObscured
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
                             label: "Enter your confirm password",
                             text: "Confirm Password",
                             borderRadius: 15.sp,
                             prefixIcon: Icons.lock,
-                            obscureText: true,
+                            obscureText: signinobscureStateProvider.isObscured,
                             func: (value) {
                               ref
                                   .read(registerNotifierProvider.notifier)
