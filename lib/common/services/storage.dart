@@ -10,6 +10,10 @@ class StorageService {
   Future<bool> setString(String key, String value) async {
     return await _pref.setString(key, value);
   }
+
+  Future setBool(String key, bool value) async {
+    return await _pref.setBool(key, value);
+  }
 }
 /*
 with return this

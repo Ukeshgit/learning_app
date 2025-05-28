@@ -100,7 +100,7 @@ class SignInController {
         "123",
       );
       Global.storageService.setString(Appconstants.STORAGE_USER_TOKEN_KEY, "");
-      GoRouter.of(ref.context).go('/home');
+      GoRouter.of(ref.context).go('/dashboard');
       //finally to route after saving the information
     } catch (e) {
       if (kDebugMode) {
