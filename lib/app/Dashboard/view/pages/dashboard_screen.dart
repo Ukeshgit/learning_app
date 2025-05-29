@@ -40,7 +40,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               unselectedItemColor: AppColors.primaryFourElementText,
             ),
           ),
-          body: Container(),
+          body: Container(
+            child: Center(child: screens(index: appIndexProvider)),
+          ),
         ),
       ),
     );

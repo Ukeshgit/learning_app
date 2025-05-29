@@ -3,11 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/common/utils/app_colors.dart';
 
 List<BottomNavigationBarItem> bottomTabs = [
-  bottomTabItem(label: "Home", icon: Icons.home, activeIcon: Icons.home_filled),
-  bottomTabItem(label: "Profile", icon: Icons.person, activeIcon: Icons.person),
-  bottomTabItem(label: "Search", icon: Icons.search, activeIcon: Icons.search),
+  _bottomTabItem(
+    label: "Home",
+    icon: Icons.home,
+    activeIcon: Icons.home_filled,
+  ),
+  _bottomTabItem(
+    label: "Profile",
+    icon: Icons.person,
+    activeIcon: Icons.person,
+  ),
+  _bottomTabItem(label: "Search", icon: Icons.search, activeIcon: Icons.search),
 ];
-BottomNavigationBarItem bottomTabItem({
+BottomNavigationBarItem _bottomTabItem({
   String label = "",
   IconData? icon,
   IconData? activeIcon,
@@ -20,3 +28,8 @@ BottomNavigationBarItem bottomTabItem({
   activeIcon: Icon(activeIcon, color: AppColors.primaryElementStatus),
   label: label,
 );
+
+Widget screens({int index = 0}) {
+  List screen = [Icon(Icons.home), Icon(Icons.person), Icon(Icons.search)];
+  return screen[index];
+}
