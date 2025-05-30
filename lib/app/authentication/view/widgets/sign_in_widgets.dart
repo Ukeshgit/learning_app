@@ -49,7 +49,7 @@ Widget appTextField({
   TextEditingController? controller,
   String label = "",
   String text = "Email",
-  IconData prefixIcon = Icons.email,
+  String prefixPath = "",
   double borderRadius = 15,
   bool obscureText = false,
   void Function(String value)? func,
@@ -70,9 +70,17 @@ Widget appTextField({
           autocorrect: false,
           obscureText: obscureText,
           decoration: InputDecoration(
-            prefix: Padding(padding: EdgeInsets.only(left: 10.w)),
             hintText: label,
-            prefixIcon: Icon(prefixIcon),
+            prefixIcon: Padding(
+              padding: EdgeInsets.all(10.w),
+              child: SvgPicture.asset(
+                prefixPath,
+                height: 16.h,
+                width: 16.w,
+                fit: BoxFit.contain,
+              ),
+            ),
+
             suffixIcon: IconButton(
               icon: suffixIcon,
               onPressed: onSuffixIconPressed,

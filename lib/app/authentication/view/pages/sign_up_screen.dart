@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_up_controller.dart';
-import 'package:learner/app/authentication/view/notifier/obscure_notifier.dart';
-import 'package:learner/app/authentication/view/notifier/register_notifier.dart';
+import 'package:learner/app/authentication/notifier/obscure_notifier.dart';
+import 'package:learner/app/authentication/notifier/register_notifier.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/utils/global_loader.dart';
+import 'package:learner/common/utils/image_res.dart';
 import 'package:learner/common/widgets/app_button.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
@@ -60,7 +61,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                             label: "Enter Your User Name",
                             text: "User Name",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.person,
+                            prefixPath: ImageRes.person,
                             func: (value) {
                               ref
                                   .read(registerNotifierProvider.notifier)
@@ -73,7 +74,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                             label: "Enter Your Email Address",
                             text: "Email",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.person,
+                            prefixPath: ImageRes.person,
                             func: (value) {
                               ref
                                   .read(registerNotifierProvider.notifier)
@@ -95,7 +96,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                             label: "Enter your password",
                             text: "Password",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.lock,
+                            prefixPath: ImageRes.lock,
                             obscureText: signinobscureStateProvider.isObscured,
                             func: (value) {
                               ref
@@ -117,7 +118,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                             label: "Enter your confirm password",
                             text: "Confirm Password",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.lock,
+                            prefixPath: ImageRes.lock,
                             obscureText: signinobscureStateProvider.isObscured,
                             func: (value) {
                               ref

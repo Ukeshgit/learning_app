@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:learner/app/authentication/view/notifier/sign_in_notifier.dart';
+import 'package:learner/app/authentication/notifier/sign_in_notifier.dart';
 import 'package:learner/common/entities/user.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:learner/common/utils/global_loader.dart';

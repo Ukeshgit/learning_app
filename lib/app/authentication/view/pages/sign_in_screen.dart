@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_in_controller.dart';
-import 'package:learner/app/authentication/view/notifier/obscure_notifier.dart';
-import 'package:learner/app/authentication/view/notifier/sign_in_notifier.dart';
+import 'package:learner/app/authentication/notifier/obscure_notifier.dart';
+import 'package:learner/app/authentication/notifier/sign_in_notifier.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/utils/global_loader.dart';
+import 'package:learner/common/utils/image_res.dart';
 import 'package:learner/common/widgets/app_button.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
@@ -59,7 +60,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                             label: "Enter Your Email Address",
                             text: "Email",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.person,
+                            prefixPath: ImageRes.person,
                             func: (value) {
                               ref
                                   .read(signInNotifierProvider.notifier)
@@ -77,7 +78,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                             label: "Enter your password",
                             text: "Password",
                             borderRadius: 15.sp,
-                            prefixIcon: Icons.lock,
+                            prefixPath: ImageRes.lock,
                             obscureText: obscureStateProvider.isObscured,
                             func: (value) {
                               ref

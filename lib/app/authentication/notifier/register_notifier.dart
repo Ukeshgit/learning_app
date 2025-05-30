@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../model/register_state.dart';
+import '../model/register_state.dart';
 
 part 'register_notifier.g.dart';
 
