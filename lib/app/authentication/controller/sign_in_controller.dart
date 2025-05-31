@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/notifier/sign_in_notifier.dart';
 import 'package:learner/common/entities/user.dart';
+import 'package:learner/common/repo/repo.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
@@ -41,8 +42,7 @@ class SignInController {
     ref.read(apploaderProvider.notifier).setLoaderValue(true);
     print("0");
     try {
-      final credentials = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final credentials = await SignInRepo.signIn(email, password);
       print('1');
       if (credentials.user == null) {
         toastMessage(msg: "User doesn't exist.");

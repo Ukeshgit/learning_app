@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learner/app/authentication/notifier/register_notifier.dart';
+import 'package:learner/common/repo/sign_up_repo.dart';
 import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
 
@@ -54,8 +55,7 @@ class SignUpController {
     ref.read(apploaderProvider.notifier).setLoaderValue(true);
     Future.delayed(Duration(seconds: 2), () async {
       try {
-        var credentials = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+        var credentials = await SignUpRepo.signUp(email, password);
         print(credentials.user!.uid);
         if (credentials.user != null) {
           await credentials.user?.sendEmailVerification();
