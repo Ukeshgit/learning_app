@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:learner/common/utils/constants.dart';
 
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
+import 'package:learner/global/global.dart';
 
 Widget appOnBoardingPage(
   PageController controller, {
@@ -43,10 +46,17 @@ Widget _nextbutton(
         );
       } else {
         //remember here
+        Global.storageService.setBool(
+          Appconstants.STORAGE_DEVICE_OPEN_FIRST_KEY,
+          true,
+        );
+
         Navigator.of(context).pushNamed('/signIn');
       }
-      print("Tapped");
-      print("Index is $index");
+      if (kDebugMode) {
+        print("Tapped");
+        print("Index is $index");
+      }
     },
     child: Container(
       margin: EdgeInsets.only(top: 100),

@@ -12,7 +12,7 @@ import 'package:learner/common/utils/app_styles.dart';
 import 'package:learner/global/global.dart';
 
 void main() async {
-  Global.init();
+  await Global.init();
   runApp(ProviderScope(child: MyApp()));
 }
 

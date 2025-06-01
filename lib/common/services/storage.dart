@@ -1,3 +1,4 @@
+import 'package:learner/common/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
@@ -10,25 +11,23 @@ class StorageService {
     return StorageService._(prefs);
   }
 
+  //for welcome route
+  Future<bool> setBool(String key, bool value) async {
+    return await _pref.setBool(key, value);
+  }
+
+  bool getDeviceFirstOpen() {
+    return _pref.getBool(Appconstants.STORAGE_DEVICE_OPEN_FIRST_KEY) ?? false;
+  }
+
+  //for sign in route
   Future<bool> setString(String key, String value) async {
     return await _pref.setString(key, value);
   }
 
-  Future setBool(String key, bool value) async {
-    return await _pref.setBool(key, value);
+  bool isLoggedIn() {
+    return _pref.getString(Appconstants.STORAGE_USER_PROFILE_KEY) != null
+        ? true
+        : false;
   }
 }
-/*
-with return this
-Person()
-  .setName('Alice')
-  .setAge(30)
-  .showInfo();
-without return this
-  Person person = Person();
-person.setName('Alice');
-person.setAge(30);
-person.showInfo();
-
-
-*/
