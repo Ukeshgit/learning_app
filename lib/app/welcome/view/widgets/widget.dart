@@ -42,6 +42,7 @@ Widget _nextbutton(
           curve: Curves.linear,
         );
       } else {
+        //remember here
         Navigator.of(context).pushNamed('/signIn');
       }
       print("Tapped");
