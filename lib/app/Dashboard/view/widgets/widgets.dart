@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:learner/app/home/view/home.dart';
 
 import 'package:learner/common/utils/image_res.dart';
 
@@ -56,7 +57,7 @@ BottomNavigationBarItem _bottomTabItem({
 
 Widget screens({int index = 0}) {
   List screen = [
-    Icon(Icons.home),
+    Home(),
     Icon(Icons.person),
     Icon(Icons.search),
     Icon(Icons.person),

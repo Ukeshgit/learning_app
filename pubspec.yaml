@@ -15,7 +15,7 @@ dependencies:
   flutter_svg: ^2.1.0
   dots_indicator: ^4.0.1
   flutter_screenutil: ^5.9.3
-  go_router: ^15.1.2
+  
   riverpod_annotation: ^2.6.1
   fluttertoast: ^8.2.12
   firebase_auth: ^5.5.4

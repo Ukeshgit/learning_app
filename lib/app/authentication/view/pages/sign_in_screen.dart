@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_in_controller.dart';
 import 'package:learner/app/authentication/notifier/obscure_notifier.dart';
 import 'package:learner/app/authentication/notifier/sign_in_notifier.dart';
@@ -23,10 +22,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   late SignInController _controller;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
     _controller = SignInController(ref);
+    super.didChangeDependencies();
   }
 
   @override
@@ -112,7 +111,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                           //app register button
                           appButton(
                             ontap: () {
-                              context.push('/signUp');
+                              Navigator.of(context).pushNamed('/signUp');
                             },
                             buttonName: "Register",
                             width: 325.w,

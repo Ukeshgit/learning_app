@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
@@ -42,7 +42,7 @@ Widget _nextbutton(
           curve: Curves.linear,
         );
       } else {
-        context.push('/signIn');
+        Navigator.of(context).pushNamed('/signIn');
       }
       print("Tapped");
       print("Index is $index");

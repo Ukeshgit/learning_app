@@ -2,10 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/notifier/sign_in_notifier.dart';
 import 'package:learner/common/entities/user.dart';
-import 'package:learner/common/repo/repo.dart';
+import 'package:learner/common/repo/sign_in_repo.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
@@ -100,7 +99,9 @@ class SignInController {
         "123",
       );
       Global.storageService.setString(Appconstants.STORAGE_USER_TOKEN_KEY, "");
-      GoRouter.of(ref.context).go('/dashboard');
+      Navigator.of(
+        ref.context,
+      ).pushNamedAndRemoveUntil('/dashboard', (route) => false);
       //finally to route after saving the information
     } catch (e) {
       if (kDebugMode) {

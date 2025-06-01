@@ -2,9 +2,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
   late final SharedPreferences _pref;
-  Future<StorageService> init() async {
-    _pref = await SharedPreferences.getInstance();
-    return this;
+
+  StorageService._(this._pref);
+
+  static Future<StorageService> init() async {
+    final prefs = await SharedPreferences.getInstance();
+    return StorageService._(prefs);
   }
 
   Future<bool> setString(String key, String value) async {

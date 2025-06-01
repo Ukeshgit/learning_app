@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:learner/app/authentication/controller/sign_up_controller.dart';
 import 'package:learner/app/authentication/notifier/obscure_notifier.dart';
 import 'package:learner/app/authentication/notifier/register_notifier.dart';

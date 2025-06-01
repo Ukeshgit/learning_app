@@ -2,7 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learner/common/routes/go_router.dart';
+import 'package:learner/app/Dashboard/view/pages/dashboard_screen.dart';
+import 'package:learner/app/authentication/view/pages/sign_in_screen.dart';
+import 'package:learner/app/authentication/view/pages/sign_up_screen.dart';
+import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
 import 'package:learner/common/utils/app_styles.dart';
 import 'package:learner/global/global.dart';
 
@@ -10,6 +13,14 @@ void main() async {
   Global.init();
   runApp(ProviderScope(child: MyApp()));
 }
+
+var routeMap = {
+  '/': (context) => WelcomeScreen(),
+  '/signIn': (context) => SignInScreen(),
+  '/signUp': (context) => SignUpScreen(),
+  '/home': (context) => MyHomePage(),
+  '/dashboard': (context) => DashboardScreen(),
+};
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -21,12 +32,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: AppTheme.themeData,
-
-          routerConfig: goRouter,
+          routes: routeMap,
+          // onGenerateRoute: ,
         );
       },
     );

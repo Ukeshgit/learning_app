@@ -15,6 +15,6 @@ class Global {
       ),
     );
 
-    storageService = await StorageService().init();
+    storageService = await StorageService.init();
   }
 }
