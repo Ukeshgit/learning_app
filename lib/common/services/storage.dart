@@ -25,6 +25,10 @@ class StorageService {
     return await _pref.setString(key, value);
   }
 
+  String getString(String key) {
+    return _pref.getString(key) ?? "";
+  }
+
   bool isLoggedIn() {
     return _pref.getString(Appconstants.STORAGE_USER_PROFILE_KEY) != null
         ? true

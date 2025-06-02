@@ -22,8 +22,7 @@ class AppPages {
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
     if (kDebugMode) {
-      print("Clicked route is: ${settings.name}");
-      print("1");
+      // print("Clicked route is: ${settings.name}");
     }
 
     if (settings.name != null) {
@@ -33,15 +32,13 @@ class AppPages {
       if (result.isNotEmpty) {
         //if we used the app for the first time or not->first time,then false otherwise true
         bool deviceNotFirstTime = Global.storageService.getDeviceFirstOpen();
-        print("Device Already opened first time is: $deviceNotFirstTime");
-        print('2');
+        // print("Device Already opened first time is: $deviceNotFirstTime");
 
         if (result.first.path == AppRoutesName.WELCOME && deviceNotFirstTime) {
-          print("App had already opened first time,so going to sign in screen");
+          // print("App had already opened first time,so going to sign in screen");
 
           bool isloggedin = Global.storageService.isLoggedIn();
-          print("isloggedin:$isloggedin");
-          print('3');
+          // print("isloggedin:$isloggedin");
 
           if (isloggedin) {
             return MaterialPageRoute(
@@ -56,8 +53,7 @@ class AppPages {
           }
         } else {
           if (kDebugMode) {
-            print("Path is ${result.first.path}");
-            print('4');
+            // print("Path is ${result.first.path}");
           }
           //this will give pages related to that path in the route list
           return MaterialPageRoute(

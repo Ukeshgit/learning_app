@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,7 @@ import 'package:learner/global/global.dart';
 
 void main() async {
   await Global.init();
+
   runApp(ProviderScope(child: MyApp()));
 }
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -96,9 +98,12 @@ class SignInController {
       //try to remember user info
       Global.storageService.setString(
         Appconstants.STORAGE_USER_PROFILE_KEY,
-        "123",
+        "Yukesh",
       );
-      Global.storageService.setString(Appconstants.STORAGE_USER_TOKEN_KEY, "");
+      Global.storageService.setString(
+        Appconstants.STORAGE_USER_TOKEN_KEY,
+        jsonEncode({"Name": "Yuke", "age": 34}),
+      );
       Navigator.of(
         ref.context,
       ).pushNamedAndRemoveUntil('/dashboard', (route) => false);
