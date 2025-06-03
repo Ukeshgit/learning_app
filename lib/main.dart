@@ -1,14 +1,6 @@
-import 'dart:convert';
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learner/app/Dashboard/view/pages/dashboard_screen.dart';
-import 'package:learner/app/authentication/view/pages/sign_in_screen.dart';
-import 'package:learner/app/authentication/view/pages/sign_up_screen.dart';
-import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
-import 'package:learner/common/routes/app_routes_name.dart';
 import 'package:learner/common/routes/routes.dart';
 import 'package:learner/common/utils/app_styles.dart';
 import 'package:learner/global/global.dart';

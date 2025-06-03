@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:learner/common/entities/entities.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,5 +36,13 @@ class StorageService {
     return _pref.getString(Appconstants.STORAGE_USER_PROFILE_KEY) != null
         ? true
         : false;
+  }
+
+  UserProfile getUserProfile() {
+    var profile = _pref.getString(Appconstants.STORAGE_USER_PROFILE_KEY) ?? "";
+    var jsonProfile = jsonDecode(profile);
+    var userProfile = UserProfile.fromJson(jsonProfile);
+
+    return userProfile;
   }
 }

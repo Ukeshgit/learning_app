@@ -98,12 +98,9 @@ class SignInController {
       //try to remember user info
       Global.storageService.setString(
         Appconstants.STORAGE_USER_PROFILE_KEY,
-        "Yukesh",
+        jsonEncode({"Name": "Yukesh", "age": 34}),
       );
-      Global.storageService.setString(
-        Appconstants.STORAGE_USER_TOKEN_KEY,
-        jsonEncode({"Name": "Yuke", "age": 34}),
-      );
+      Global.storageService.setString(Appconstants.STORAGE_USER_TOKEN_KEY, "");
       Navigator.of(
         ref.context,
       ).pushNamedAndRemoveUntil('/dashboard', (route) => false);

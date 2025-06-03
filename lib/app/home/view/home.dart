@@ -12,6 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(Global.storageService.getUserProfile().name);
     return Scaffold(
       appBar: buildAppBar(text: "Home"),
       body: Container(
@@ -24,11 +25,17 @@ class Home extends StatelessWidget {
               color: AppColors.primaryThreeElementText,
               fontWeight: FontWeight.bold,
             ),
+            // Global.storageService.getUserProfile().access_token == null
+            //     ? text24Normal(
+            //       text: "Guest",
 
+            //       color: AppColors.primaryText,
+            //       fontWeight: FontWeight.bold,
+            //     )
+            //     :
             text24Normal(
-              text: Global.storageService.getString(
-                Appconstants.STORAGE_USER_PROFILE_KEY,
-              ),
+              text: Global.storageService.getUserProfile().name,
+
               color: AppColors.primaryText,
               fontWeight: FontWeight.bold,
             ),
