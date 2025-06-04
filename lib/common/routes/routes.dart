@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learner/app/Dashboard/view/pages/dashboard_screen.dart';
 import 'package:learner/app/authentication/view/pages/sign_in_screen.dart';
 import 'package:learner/app/authentication/view/pages/sign_up_screen.dart';
-import 'package:learner/app/home/view/home.dart';
+import 'package:learner/app/home/view/pages/home.dart';
 import 'package:learner/app/welcome/view/screen/welcome_screen.dart';
 import 'package:learner/common/routes/app_routes_name.dart';
 import 'package:learner/common/utils/constants.dart';

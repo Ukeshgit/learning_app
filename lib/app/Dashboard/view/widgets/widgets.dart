@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:learner/app/home/view/home.dart';
+import 'package:learner/app/home/view/pages/home.dart';
 
 import 'package:learner/common/utils/image_res.dart';
 
