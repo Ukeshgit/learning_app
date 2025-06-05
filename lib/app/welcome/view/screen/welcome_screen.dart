@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/welcome/controller/welcome_notifier.dart';
 import 'package:learner/app/welcome/view/widgets/widget.dart';
+import 'package:learner/common/utils/image_res.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   WelcomeScreen({super.key});
@@ -36,7 +37,7 @@ class WelcomeScreen extends ConsumerWidget {
                     appOnBoardingPage(
                       context: context,
                       controller,
-                      imagepath: "assets/images/reading.png",
+                      imagepath: ImageRes.reading,
                       title: "First See learning",
                       subtitle:
                           "Forgot about all paper all knowledge are in one learning",
@@ -45,7 +46,7 @@ class WelcomeScreen extends ConsumerWidget {
                     appOnBoardingPage(
                       context: context,
                       controller,
-                      imagepath: "assets/images/boy.png",
+                      imagepath: ImageRes.boy,
                       title: "connect with everyone",
                       subtitle:
                           "Always keep in touch with your tutor and friends. Let's get connected",
@@ -54,7 +55,7 @@ class WelcomeScreen extends ConsumerWidget {
                     appOnBoardingPage(
                       context: context,
                       controller,
-                      imagepath: "assets/images/man.png",
+                      imagepath: ImageRes.man,
                       title: "Always fascinated learning",
                       subtitle:
                           "Anytime,anywhere. The time is at your discretion. So Study anywhere",
