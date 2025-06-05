@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learner/app/home/view/pages/home.dart';
+import 'package:learner/common/utils/app_colors.dart';
 
 import 'package:learner/common/utils/image_res.dart';
 
@@ -29,8 +30,8 @@ List<BottomNavigationBarItem> bottomTabs = [
   ),
   _bottomTabItem(
     label: "Profile",
-    iconPath: ImageRes.person,
-    activePath: ImageRes.person,
+    iconPath: ImageRes.profile,
+    activePath: ImageRes.profile,
   ),
 ];
 BottomNavigationBarItem _bottomTabItem({
@@ -41,14 +42,10 @@ BottomNavigationBarItem _bottomTabItem({
   icon: SizedBox(
     height: 15.h,
     width: 15.w,
-    child: Container(
-      child: SvgPicture.asset(iconPath),
-      height: 20.h,
-      width: 20.w,
-    ),
+    child: Container(child: Image.asset(iconPath), height: 20.h, width: 20.w),
   ),
   activeIcon: Container(
-    child: SvgPicture.asset(activePath),
+    child: Image.asset(activePath, color: AppColors.primaryElement),
     height: 20.h,
     width: 20.w,
   ),

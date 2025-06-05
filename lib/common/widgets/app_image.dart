@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget appImage({String imagePath = "assets/icons/home.svg"}) {
-  return SvgPicture.asset(imagePath, color: Colors.white);
+Widget appImage({
+  String imagePath = "assets/icons/user.png",
+  int h = 16,
+  int w = 16,
+}) {
+  return Image.asset(imagePath, color: Colors.white, height: h.h, width: w.h);
 }

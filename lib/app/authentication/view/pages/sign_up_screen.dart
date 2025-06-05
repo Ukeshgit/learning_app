@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learner/app/authentication/controller/register_notifier.dart';
 import 'package:learner/app/authentication/controller/sign_up_controller.dart';
-import 'package:learner/app/authentication/notifier/obscure_notifier.dart';
-import 'package:learner/app/authentication/notifier/register_notifier.dart';
+import 'package:learner/app/authentication/controller/obscure_notifier.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/utils/global_loader.dart';

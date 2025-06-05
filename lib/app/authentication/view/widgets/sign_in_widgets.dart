@@ -23,9 +23,9 @@ Widget thirdPartyLogin() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _loginButton("assets/icons/google_logo.svg"),
-        _loginButton("assets/icons/apple_logo.svg"),
-        _loginButton("assets/icons/facebook_logo.svg"),
+        _loginButton("assets/icons/google.png"),
+        _loginButton("assets/icons/apple.png"),
+        _loginButton("assets/icons/facebook.png"),
       ],
     ),
   );
@@ -40,7 +40,7 @@ Widget _loginButton(String imagePath) {
       width: 40.w,
       height: 40.h,
       margin: EdgeInsets.only(left: 10, right: 10),
-      child: SvgPicture.asset(imagePath),
+      child: Image.asset(imagePath),
     ),
   );
 }
@@ -72,12 +72,12 @@ Widget appTextField({
           decoration: InputDecoration(
             hintText: label,
             prefixIcon: Padding(
-              padding: EdgeInsets.all(10.w),
-              child: SvgPicture.asset(
+              padding: EdgeInsets.all(11.w),
+              child: Image.asset(
                 prefixPath,
-                height: 16.h,
-                width: 16.w,
-                fit: BoxFit.contain,
+                height: 8.h,
+                width: 8.w,
+                // fit: BoxFit.contain,
               ),
             ),
 

@@ -39,13 +39,11 @@ Widget searchBox() {
         onTap: () {},
         child: Container(
           height: 40.h,
-          width: 36.w,
+          width: 38.w,
           padding: EdgeInsets.symmetric(horizontal: 4.w),
           decoration: appBoxShadow(
             color: AppColors.primaryElement,
             radius: 8.sp,
-
-            // border: Border.()
           ),
           child: appImage(imagePath: ImageRes.searchFilter),
         ),

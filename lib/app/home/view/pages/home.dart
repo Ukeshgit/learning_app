@@ -10,14 +10,20 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(Global.storageService.getUserProfile().name);
     return Scaffold(
       appBar: buildAppBar(text: "Home"),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [helloText(), userName(), searchBox()],
+          children: [
+            helloText(),
+            userName(),
+            SizedBox(height: 20.h),
+            searchBox(),
+
+            banner(),
+          ],
         ),
       ),
     );
