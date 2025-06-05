@@ -7,4 +7,6 @@ class ImageRes {
   static const String message_circle = "$_imageBase/message_circle.svg";
   static const String person = "$_imageBase/person.svg";
   static const String lock = "$_imageBase/lock.svg";
+
+  static const String searchFilter = "$_imageBase/filter.svg";
 }
