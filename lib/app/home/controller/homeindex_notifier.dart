@@ -6,4 +6,8 @@ part 'homeindex_notifier.g.dart';
 class HomeIndexNotifier extends _$HomeIndexNotifier {
   @override
   int build() => 0;
+
+  void changeIndex(int index) {
+    state = index;
+  }
 }
