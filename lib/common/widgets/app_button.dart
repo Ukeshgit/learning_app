@@ -20,7 +20,7 @@ Widget appButton({
         color: isLogin ? AppColors.primaryElement : AppColors.primaryBackground,
         border: Border.all(color: AppColors.primaryFourElementText),
       ),
-      child: Center(child: text16Normal(text: buttonName, color: color)),
+      child: Center(child: Text16Normal(text: buttonName, color: color)),
     ),
   );
 }

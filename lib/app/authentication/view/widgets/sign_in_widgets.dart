@@ -6,7 +6,7 @@ import 'package:learner/common/widgets/text_widgets.dart';
 
 AppBar buildAppBar({String text = "Log In"}) {
   return AppBar(
-    title: text16Normal(text: text, color: AppColors.primaryText),
+    title: Text16Normal(text: text, color: AppColors.primaryText),
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(
         1,
@@ -61,7 +61,7 @@ Widget appTextField({
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        text14Normal(text: text),
+        Text14Normal(text: text),
         TextField(
           controller: controller,
           keyboardType: TextInputType.multiline,

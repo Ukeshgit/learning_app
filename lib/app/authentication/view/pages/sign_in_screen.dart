@@ -50,7 +50,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                           //tap login button
                           thirdPartyLogin(),
                           //or with email and password text
-                          text14Normal(text: "Or use email account to login"),
+                          const Text14Normal(
+                            text: "Or use email account to login",
+                          ),
 
                           SizedBox(height: 50.h),
                           //app text field

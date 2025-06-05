@@ -14,7 +14,7 @@ class HelloText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return text24Normal(
+    return Text24Normal(
       text: "Hello,",
       color: AppColors.primaryThreeElementText,
       fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return text24Normal(
+    return Text24Normal(
       text: Global.storageService.getUserProfile().name,
 
       color: AppColors.primaryText,

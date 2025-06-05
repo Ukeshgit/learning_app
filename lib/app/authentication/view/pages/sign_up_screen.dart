@@ -50,7 +50,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         children: [
                           SizedBox(height: 16.h),
                           //or with email and password text
-                          text14Normal(
+                          const Text14Normal(
                             text: "Enter the details below and free sign up",
                           ),
 
@@ -130,7 +130,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           Container(
                             margin: EdgeInsets.only(left: 16.w),
                             alignment: Alignment.centerLeft,
-                            child: text14Normal(
+                            child: const Text14Normal(
                               text:
                                   "By signing up you agree with our   \nTerms of Service and Privacy Policy",
                               color: AppColors.primarySecondaryElementText,
