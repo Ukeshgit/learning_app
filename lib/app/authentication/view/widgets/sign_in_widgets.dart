@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:learner/common/utils/app_colors.dart';
+import 'package:learner/common/utils/image_res.dart';
+import 'package:learner/common/widgets/app_image.dart';
+import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 
 AppBar buildAppBar({String text = "Log In"}) {
@@ -103,5 +106,27 @@ Widget appTextField({
         ),
       ],
     ),
+  );
+}
+
+AppBar homeBuildAppBar({String text = "Log In"}) {
+  return AppBar(
+    title: Container(
+      margin: EdgeInsets.only(left: 7.w, right: 7.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          appImage(w: 18, h: 12, imagePath: ImageRes.menu),
+          const AppBoxDecorationImage(),
+        ],
+      ),
+    ),
+    bottom: PreferredSize(
+      preferredSize: Size.fromHeight(
+        1,
+      ), //at a distance of 100 from the appbar,create a container of height ... towards upward
+      child: Container(color: Colors.grey.shade300, height: 1),
+    ),
+    centerTitle: true,
   );
 }

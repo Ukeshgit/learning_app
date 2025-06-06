@@ -7,5 +7,5 @@ Widget appImage({
   int h = 16,
   int w = 16,
 }) {
-  return Image.asset(imagePath, color: Colors.white, height: h.h, width: w.h);
+  return Image.asset(imagePath, height: h.h, width: w.h);
 }

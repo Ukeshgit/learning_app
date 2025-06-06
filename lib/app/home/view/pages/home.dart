@@ -30,7 +30,7 @@ class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(text: "Home"),
+      appBar: homeBuildAppBar(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(

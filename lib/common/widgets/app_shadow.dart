@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/common/utils/app_colors.dart';
+import 'package:learner/common/utils/image_res.dart';
 
 BoxDecoration appBoxShadow({
   Color color = AppColors.primaryElement,
@@ -47,4 +48,22 @@ BoxDecoration appBoxShadowWithRadius({
       ),
     ],
   );
+}
+
+class AppBoxDecorationImage extends StatelessWidget {
+  const AppBoxDecorationImage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30.h,
+      width: 30.w,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(ImageRes.profile),
+        ),
+      ),
+    );
+  }
 }
