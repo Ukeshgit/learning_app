@@ -42,6 +42,7 @@ class _HomeState extends ConsumerState<Home> {
             searchBox(),
             SizedBox(height: 20.h),
             AppBanner(controller: controller, ref: ref),
+            HomeMenuBar(),
           ],
         ),
       ),

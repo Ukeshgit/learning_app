@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/home/controller/homeindex_notifier.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/utils/image_res.dart';
+import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 import 'package:learner/global/global.dart';
 
@@ -88,4 +89,63 @@ Widget _bannerElement({required String imagePath}) {
       image: DecorationImage(image: AssetImage(imagePath)),
     ),
   );
+}
+
+class HomeMenuBar extends StatelessWidget {
+  const HomeMenuBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //see all courses
+        Container(
+          margin: EdgeInsets.only(top: 10.h),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text16Normal(
+                text: "Choice your courses",
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryText,
+              ),
+              const Text14Normal(text: "See All"),
+            ],
+          ),
+        ),
+        //course item button
+        Container(
+          margin: EdgeInsets.only(top: 15.h),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 5.h),
+                decoration: appBoxShadow(radius: 8.sp),
+                child: const Text11Normal(text: "All"),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 5.h),
+                // decoration: appBoxShadow(radius: 8.sp),
+                child: const Text11Normal(
+                  text: "Popular",
+                  color: AppColors.primaryThreeElementText,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 5.h),
+                // decoration: appBoxShadow(radius: 8.sp),
+                child: const Text11Normal(
+                  text: "Newest",
+                  color: AppColors.primaryThreeElementText,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }
