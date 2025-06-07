@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/home/controller/homeindex_notifier.dart';
 import 'package:learner/common/utils/app_colors.dart';
 import 'package:learner/common/utils/image_res.dart';
+import 'package:learner/common/widgets/app_image.dart';
 import 'package:learner/common/widgets/app_shadow.dart';
 import 'package:learner/common/widgets/text_widgets.dart';
 import 'package:learner/global/global.dart';
@@ -146,6 +147,29 @@ class HomeMenuBar extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class CourseItemGrid extends StatelessWidget {
+  const CourseItemGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: GridView.builder(
+        physics: ScrollPhysics(),
+        itemCount: 6,
+        shrinkWrap: true,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 40,
+          mainAxisSpacing: 40,
+        ),
+        itemBuilder: (context, index) {
+          return appImage();
+        },
+      ),
     );
   }
 }

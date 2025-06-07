@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learner/app/authentication/view/widgets/sign_in_widgets.dart';
 import 'package:learner/app/home/controller/homeindex_notifier.dart';
 import 'package:learner/app/home/view/widgets/home_widgets.dart';
+
 import 'package:learner/common/widgets/search_widget.dart';
-import 'package:learner/global/global.dart';
 
 class Home extends ConsumerStatefulWidget {
   const Home({super.key});
@@ -31,19 +31,22 @@ class _HomeState extends ConsumerState<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: homeBuildAppBar(),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HelloText(),
-            const UserName(),
-            SizedBox(height: 20.h),
-            searchBox(),
-            SizedBox(height: 20.h),
-            AppBanner(controller: controller, ref: ref),
-            HomeMenuBar(),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HelloText(),
+              const UserName(),
+              SizedBox(height: 20.h),
+              searchBox(),
+              SizedBox(height: 20.h),
+              AppBanner(controller: controller, ref: ref),
+              const HomeMenuBar(),
+              const CourseItemGrid(),
+            ],
+          ),
         ),
       ),
     );
