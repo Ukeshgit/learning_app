@@ -32,6 +32,10 @@ class StorageService {
     return _pref.getString(key) ?? "";
   }
 
+  String getUserToken() {
+    return _pref.getString(Appconstants.STORAGE_USER_TOKEN_KEY) ?? "";
+  }
+
   bool isLoggedIn() {
     return _pref.getString(Appconstants.STORAGE_USER_PROFILE_KEY) != null
         ? true
