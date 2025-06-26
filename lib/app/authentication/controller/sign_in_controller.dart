@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learner/app/authentication/controller/sign_in_notifier.dart';
 import 'package:learner/common/entities/user.dart';
 import 'package:learner/common/repo/sign_in_repo.dart';
+import 'package:learner/common/services/http_util.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:learner/common/utils/global_loader.dart';
 import 'package:learner/common/widgets/pop_up_messages.dart';
@@ -92,7 +93,8 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    //we need to talk  to server
+    //we need to talk  to
+    HttpUtil().post(path: '/api/login');
     //have local storage
     try {
       //try to remember user info

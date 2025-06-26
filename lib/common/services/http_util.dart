@@ -44,6 +44,7 @@ class HttpUtil {
         authorization,
       ); //replace the same key of both with new value of key
     }
+    print("before response");
 
     var response = await dio.post(
       path,
@@ -51,7 +52,8 @@ class HttpUtil {
       queryParameters: queryParameters,
       options: requestOptions,
     );
+    print("Response is printed");
 
-    return response.data;
+    return response.data; //response->repo->data model->controller->UI
   }
 }

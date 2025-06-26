@@ -8,7 +8,7 @@ import 'package:learner/global/global.dart';
 
 void main() async {
   await Global.init();
-  // HttpUtil().;
+  HttpUtil().post(path: '/api/login');
 
   runApp(ProviderScope(child: MyApp()));
 }
