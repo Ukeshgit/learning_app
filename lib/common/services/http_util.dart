@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:learner/common/utils/constants.dart';
 import 'package:learner/global/global.dart';
 
 class HttpUtil {
@@ -11,7 +12,7 @@ class HttpUtil {
   HttpUtil._() {
     dio = Dio(
       BaseOptions(
-        baseUrl: "http://127.0.0.1:8000",
+        baseUrl: Appconstants.SERVER_API_URL,
         connectTimeout: Duration(seconds: 10),
         receiveTimeout: Duration(seconds: 10),
         headers: {},
@@ -54,6 +55,8 @@ class HttpUtil {
     );
     print("Response is printed");
 
+    print(response.data);
+    print(response.data["message"]);
     return response.data; //response->repo->data model->controller->UI
   }
 }
