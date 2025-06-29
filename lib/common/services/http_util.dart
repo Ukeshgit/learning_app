@@ -1,32 +1,50 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:learner/common/utils/constants.dart';
 import 'package:learner/global/global.dart';
 
 class HttpUtil {
-  late Dio dio;
-  static final HttpUtil _instance = HttpUtil._();
+  late final Dio dio;
+  static final HttpUtil _instance = HttpUtil._internal();
 
-  factory HttpUtil() {
-    return _instance; //to return the instance of the class
-  }
-  HttpUtil._() {
+  factory HttpUtil() => _instance;
+
+  HttpUtil._internal() {
     dio = Dio(
       BaseOptions(
         baseUrl: Appconstants.SERVER_API_URL,
-        connectTimeout: Duration(seconds: 10),
-        receiveTimeout: Duration(seconds: 10),
-        headers: {},
-        contentType: "application/json:charset=UTF-8",
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+        contentType: "application/json; charset=UTF-8",
         responseType: ResponseType.json,
       ),
     );
-  } //gonna create the private class where no object can be created->we can't change the value of bseurl,coneectiontimeout etc
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          print("➡️ Request: ${options.method} ${options.path}");
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          print(" Response: ${response.statusCode} ${response.data}");
+          return handler.next(response);
+        },
+        onError: (DioException e, handler) {
+          print(" DioError: $e");
+          final eInfo = createErrorEntity(e);
+          onError(eInfo);
+          handler.next(e);
+        },
+      ),
+    );
+  }
 
   Map<String, dynamic> getAuthorizationHeader() {
-    var headers = <String, dynamic>{};
-    var access_token = Global.storageService.getUserToken();
-    if (access_token.isNotEmpty) {
-      headers['Authorization'] = "Bearer $access_token";
+    final headers = <String, dynamic>{};
+    final accessToken = Global.storageService.getUserToken();
+    if (accessToken.isNotEmpty) {
+      headers['Authorization'] = "Bearer $accessToken";
     }
     return headers;
   }
@@ -37,26 +55,79 @@ class HttpUtil {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    Options requestOptions = options ?? Options();
-    requestOptions.headers = requestOptions.headers ?? {};
-    Map<String, dynamic> authorization = getAuthorizationHeader();
-    if (authorization != null) {
-      requestOptions.headers!.addAll(
-        authorization,
-      ); //replace the same key of both with new value of key
-    }
-    print("before response");
+    final requestOptions = options ?? Options();
+    requestOptions.headers ??= {};
+    requestOptions.headers!.addAll(getAuthorizationHeader());
 
-    var response = await dio.post(
+    print("📡 Sending POST to $path");
+
+    final response = await dio.post(
       path,
       data: data,
       queryParameters: queryParameters,
       options: requestOptions,
     );
-    print("Response is printed");
 
-    print(response.data);
-    print(response.data["message"]);
-    return response.data; //response->repo->data model->controller->UI
+    print("✅ Response Data: ${response.data}");
+    return response.data;
+  }
+}
+
+class ErrorEntity implements Exception {
+  final int code;
+  final String message;
+
+  ErrorEntity({required this.code, required this.message});
+
+  @override
+  String toString() {
+    return "Exception: code=$code, message=$message";
+  }
+}
+
+ErrorEntity createErrorEntity(DioException e) {
+  switch (e.type) {
+    case DioExceptionType.connectionTimeout:
+      return ErrorEntity(code: -1, message: "Connection timed out");
+    case DioExceptionType.sendTimeout:
+      return ErrorEntity(code: -1, message: "Send timed out");
+    case DioExceptionType.receiveTimeout:
+      return ErrorEntity(code: -1, message: "Receive timed out");
+    case DioExceptionType.badCertificate:
+      return ErrorEntity(code: -1, message: "Bad SSL certificate");
+    case DioExceptionType.badResponse:
+      print("Bad response...");
+      switch (e.response!.statusCode) {
+        case 400:
+          return ErrorEntity(code: 400, message: "Request Syntax error");
+        case 401:
+          return ErrorEntity(code: 401, message: "Permission denied");
+
+        default:
+          return ErrorEntity(code: -1, message: "Server Bad response");
+      }
+    case DioExceptionType.cancel:
+      return ErrorEntity(code: -1, message: "Request cancelled");
+    case DioExceptionType.connectionError:
+      return ErrorEntity(code: -1, message: "Connection error");
+    case DioExceptionType.unknown:
+      return ErrorEntity(code: -1, message: "Unknown error: ${e.message}");
+  }
+}
+
+void onError(ErrorEntity eInfo) {
+  print("Error code:${eInfo.code} and Message :${eInfo.message}");
+  switch (eInfo.code) {
+    case 400:
+      print("Server Syntax error");
+      break;
+    case 401:
+      print("You are denied to continue");
+      break;
+    case 500:
+      print("Server Internal error");
+      break;
+    default:
+      print("Unknown error");
   }
 }

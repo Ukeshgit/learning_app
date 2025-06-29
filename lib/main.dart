@@ -8,7 +8,17 @@ import 'package:learner/global/global.dart';
 
 void main() async {
   await Global.init();
-  HttpUtil().post(path: '/api/login');
+  HttpUtil().post(
+    path: '/api/login',
+    queryParameters: {
+      "email": "born2learn1010@gmail.com",
+      "name": "Yukesh",
+      "password": "villoc@123",
+      "type": 2,
+      "open_id": "xydax",
+      "avatar": "abcd",
+    },
+  );
 
   runApp(ProviderScope(child: MyApp()));
 }
